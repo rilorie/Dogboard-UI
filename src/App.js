@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Random from "./pages/random";
+import SinglePhoto from "./pages/SinglePhoto";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Boards from "./pages/boards";
+import SingleBoard from "./pages/singleBoard";
+import NavBarComponent from "./NavBarComponent";
+import { store } from './state/store';
+import React from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          {/* <Route index element={<Home />} /> */}
+          <Route path="singlephoto" element={<Provider store={store}>
+            <SinglePhoto />          </Provider>} />
+          <Route path="random" element={<Provider store={store}>
+            <Random />
+          </Provider>} />
+          <Route path="login" element={<Provider store={store}>
+            <Login />
+          </Provider>} />
+          <Route path="register" element={<Provider store={store}>
+            <Register />
+          </Provider>} />
+          <Route path="boards" element={<Provider store={store}>
+            <Boards />
+          </Provider>} />
+          <Route path="board/:id" element={<Provider store={store}>
+            <SingleBoard />
+          </Provider>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     {/* <Provider store={store}> */}
+//     <App />
+//     {/* </Provider> */}
+//   </React.StrictMode>
+// );
