@@ -16,26 +16,27 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          {/* <Route index element={<Home />} /> */}
-          <Route path="singlephoto" element={<Provider store={store}>
-            <SinglePhoto />          </Provider>} />
-          <Route path="random" element={<Provider store={store}>
-            <Random />
-          </Provider>} />
-          <Route path="login" element={<Provider store={store}>
-            <Login />
-          </Provider>} />
-          <Route path="register" element={<Provider store={store}>
-            <Register />
-          </Provider>} />
-          <Route path="boards" element={<Provider store={store}>
-            <Boards />
-          </Provider>} />
-          <Route path="board/:id" element={<Provider store={store}>
-            <SingleBoard />
-          </Provider>} />
-        </Route>
+        {/* <Route index element={<Home />} /> */}
+        <Route path="/" element={<Provider store={store}>
+          <Random />
+        </Provider>} />
+        <Route path="/singlephoto" element={<Provider store={store}>
+          <SinglePhoto />          </Provider>} />
+        <Route path="/random" element={<Provider store={store}>
+          <Random />
+        </Provider>} />
+        <Route path="/login" element={<Provider store={store}>
+          <Login />
+        </Provider>} />
+        <Route path="/register" element={<Provider store={store}>
+          <Register />
+        </Provider>} />
+        <Route path="/boards" element={<Provider store={store}>
+          <Boards />
+        </Provider>} />
+        <Route path="/board/:id" element={<Provider store={store}>
+          <SingleBoard />
+        </Provider>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,34 +1,46 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './Navbar.css';
 
-function NavBarComponent() {
+const NavBarComponent = () => {
+
   const token = sessionStorage.getItem('jwtToken');
-  const navigate = useNavigate();
 
-  console.log(sessionStorage)
   return (
-    <div className='flex pa3'>
-      <div className='pr6'>Dogboard</div>
-      <div className='pr4'><Link to="/singlephoto">Give me a photo</Link></div>
-      <div className='pr4'><Link to="/random">Gallery</Link></div>
-      <div><Link to="/boards">Your boards</Link></div>
-      {token === null ? <div className='ml-auto'><Link to="/login">Login</Link></div> : <div className='ml-auto'>Profile</div>}
-      {token !== null && <div className='ml-auto' onClick={() => {
-        sessionStorage.removeItem('jwtToken');
-        sessionStorage.removeItem('userId')
-      }}>Logout</div>}
-    </div>
-    // <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    //   <a class="navbar-brand" href="#">Dogboard</a>
 
-    //   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    //     <div className='pr4'><Link to="/singlephoto">Give me a photo</Link></div>
-    //     <div className='pr4'><Link to="/random">Gallery</Link></div>
-    //     <div><Link to="/boards">Your boards</Link></div>
-    //     {userId === '' ? <div className='ml-auto pr3'><Link to="/login">Login</Link></div> : <div className='ml-auto pr3'>Profile</div>}
-    //   </div>
-    // </nav>
+    <nav className="navbar">
+      <div className="navbar-left pr5">
+        <a href="/" className="logo">
+          Dogboard
+        </a>
+      </div>
+      <div className="navbar-center mr-auto">
+        <ul className="nav-links">
+          <li className='pr3'>
+            <a href="/singlephoto">Give me a photo</a>
+          </li>
+          <li>
+            <a href="/boards">Your boards</a>
+          </li>
+
+        </ul>
+      </div>
+      <div className="navbar-center">
+
+        <ul className="nav-links">
+          {token === null ? <li>
+            <a href="/login">Login</a>
+          </li> : <div className='ml-auto' style={{ cursor: "pointer" }} onClick={() => {
+            sessionStorage.removeItem('jwtToken');
+            sessionStorage.removeItem('userId')
+            window.location.reload();
+
+          }}>Logout</div>}
+
+        </ul>
+
+      </div>
+    </nav>
   );
-}
+};
 
 export default NavBarComponent;

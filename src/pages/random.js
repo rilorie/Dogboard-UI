@@ -64,11 +64,10 @@ function Random() {
           className="image"
         // style={{ position: 'absolute', zIndex: 2 }}
         />
-        {onHover &&
+        {onHover && userId &&
           <div id="overlay_text" style={{ position: 'absolute', top: '10px', zIndex: 2, }}>
-            <div className='flex justify-center items-center'>
-              {/* BAODRRRCRBHJNJJN */}
-              <div className="pl1 pt2 dropdown" >
+            <div className=''>
+              <div className="pl2 pt2 dropdown flex justify-center items-center" >
                 <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   +
                 </a>
@@ -82,7 +81,8 @@ function Random() {
                   })}
                 </ul>
               </div>
-            </div></div>
+            </div>
+          </div>
         }
       </div>
     );
@@ -90,13 +90,13 @@ function Random() {
   return (
     <div>
       <NavBarComponent />
-      <div className='flex items-center justify-center pb3'>
+      <div className='flex items-center justify-center pb3 pt2'>
         <div className='pr2'>Filter by breed: </div>
         <div className="dropdown">
           <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {selectedBreed}
           </a>
-          <ul className="dropdown-menu">
+          <ul className="dropdown-menu overflow-scroll h5" >
             {breedNames.map((breed) => {
               return (
                 <><li className='mh2'>

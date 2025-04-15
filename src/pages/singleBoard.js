@@ -45,9 +45,8 @@ function SingleBoard() {
     }, [userId]);
     return (
         <div>
-
             <NavBarComponent />
-            <div className="gallery" style={{ marginLeft: 'auto', marginRight: 'auto', width: '80%' }}>
+            <div className="gallery pt3" style={{ marginLeft: 'auto', marginRight: 'auto', width: '80%' }}>
                 {photos?.map((photo) => renderImage(photo.photoName))}
             </div>
         </div>

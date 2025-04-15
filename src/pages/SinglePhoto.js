@@ -56,18 +56,16 @@ function SinglePhoto() {
             getBoards(userId);
         }
     }, [userId]);
-    console.log(boards)
-    console.log('data', data)
 
     return (
         <div>
             <NavBarComponent />
-            <div className='flex justify-center'>
+            <div className='flex justify-center pt6'>
                 {renderImage(data)}
             </div>
             <div className='flex justify-center items-center'>
                 <div className='pt2 flex justify-center'><button type="button" class="btn btn-primary" onClick={() => getRandomSinglePhoto(setData)}>Give me a new photo</button></div>
-                <div className="pl1 pt2 dropdown">
+                {userId && <div className="pl1 pt2 dropdown">
                     <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Add to board
                     </a>
@@ -80,7 +78,7 @@ function SinglePhoto() {
                                 </>)
                         })}
                     </ul>
-                </div>
+                </div>}
             </div>
         </div>
     );
